@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle de Proyecto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h1 class="mt-4">Detalle del Proyecto</h1>
+    <div>
+        <p><strong>Nombre:</strong> <span th:text="${proyecto.nombre}">Proyecto X</span></p>
+        <p><strong>Descripción:</strong> <span th:text="${proyecto.descripcion}">Descripción...</span></p>
+        <p><strong>Fecha de Inicio:</strong> <span th:text="${proyecto.fechaInicio}">2025-02-18</span></p>
+        <p><strong>Estado:</strong> <span th:text="${proyecto.estado}">Activo</span></p>
+    </div>
+
+    <hr>
+    <h2>Tareas Asociadas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Estado</th>
+                <th>Fecha Límite</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tarea : ${proyecto.tareas}">
+                <td th:text="${tarea.titulo}">Título Tarea</td>
+                <td th:text="${tarea.estado}">Pendiente</td>
+                <td th:text="${tarea.fechaLimite}">2025-03-01</td>
+                <td>
+                    <a th:href="@{/tareas/eliminar/{id}(id=${tarea.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/tareas/crear(proyectoId=${proyecto.id})}" class="btn btn-success">Nueva Tarea</a>
+    <a th:href="@{/proyectos}" class="btn btn-secondary ms-2">Volver</a>
+</body>
+</html>

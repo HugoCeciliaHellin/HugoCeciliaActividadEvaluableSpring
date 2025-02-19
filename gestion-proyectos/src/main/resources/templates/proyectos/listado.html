@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Proyectos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Listado de Proyectos</h1>
+    
+    <!-- Botón para crear un nuevo proyecto -->
+    <a th:href="@{/proyectos/crear}" class="btn btn-primary mb-3">Crear Nuevo Proyecto</a>
+    
+    <!-- Tabla de proyectos -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha de Inicio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre la lista de proyectos enviada desde el controlador -->
+            <tr th:each="proyecto : ${proyectos}">
+                <td th:text="${proyecto.id}">1</td>
+                <td th:text="${proyecto.nombre}">Nombre Proyecto</td>
+                <td th:text="${proyecto.descripcion}">Descripción</td>
+                <td th:text="${proyecto.fechaInicio}">2025-02-18</td>
+                <td th:text="${proyecto.estado}">ACTIVO</td>
+                <td>
+                    <!-- Enlace para ver los detalles del proyecto -->
+                    <a th:href="@{'/proyectos/' + ${proyecto.id}}" class="btn btn-info btn-sm">Ver</a>
+                    <!-- Enlace para eliminar el proyecto -->
+                    <a th:href="@{'/proyectos/eliminar/' + ${proyecto.id}}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
