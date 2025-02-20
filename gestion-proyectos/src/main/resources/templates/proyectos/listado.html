@@ -36,6 +36,9 @@
                     <a th:href="@{'/proyectos/' + ${proyecto.id}}" class="btn btn-info btn-sm">Ver</a>
                     <!-- Enlace para eliminar el proyecto -->
                     <a th:href="@{'/proyectos/eliminar/' + ${proyecto.id}}" class="btn btn-danger btn-sm">Eliminar</a>
+                     <!-- Enlace para editar el proyecto en listado.html o detalle.html -->
+                     <a th:href="@{'/proyectos/editar/' + ${proyecto.id}}" class="btn btn-warning btn-sm">Editar</a>
+
                 </td>
             </tr>
         </tbody>
