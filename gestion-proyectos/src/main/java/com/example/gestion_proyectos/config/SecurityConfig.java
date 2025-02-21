@@ -17,8 +17,8 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
-            .loginPage("/login")              // si tienes un login personalizado
-            .defaultSuccessUrl("/proyectos", true)  // <-- la ruta a la que quieres ir tras login
+            .loginPage("/login")              
+            .defaultSuccessUrl("/proyectos", true)  //  La URL a la que se redirige después de iniciar sesión correctamente
             .permitAll()
         )
             .logout(logout -> logout.permitAll())

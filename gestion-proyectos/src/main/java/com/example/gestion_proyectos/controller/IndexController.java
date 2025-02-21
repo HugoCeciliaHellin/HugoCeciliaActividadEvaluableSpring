@@ -8,7 +8,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String home() {
-        // Redirige a la ruta de listado de proyectos
+        // Redirige a la lista de proyectos
         return "redirect:/proyectos";
     }
 }

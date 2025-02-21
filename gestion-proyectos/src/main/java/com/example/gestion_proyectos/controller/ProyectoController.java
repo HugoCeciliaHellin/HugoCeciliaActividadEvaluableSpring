@@ -41,36 +41,36 @@ public String listarProyectos(Model model) {
         return "proyectos/crear";
     }
 
-    // Guardar nuevo proyecto
+    // Guardar proyecto
     @PostMapping
     public String guardarProyecto(@ModelAttribute Proyecto proyecto) {
         proyectoService.guardarProyecto(proyecto);
         return "redirect:/proyectos";
     }
 
-    // Ver detalles de un proyecto y sus tareas
+    // Ver detalle de un proyecto
     @GetMapping("/{id}")
     public String verDetalle(@PathVariable Long id, Model model) {
         proyectoService.obtenerProyecto(id).ifPresent(proyecto -> model.addAttribute("proyecto", proyecto));
         return "proyectos/detalle";
     }
 
-    // Eliminar un proyecto
+    // Eliminar proyecto por id
     @GetMapping("/eliminar/{id}")
     public String eliminarProyecto(@PathVariable Long id) {
         proyectoService.eliminarProyecto(id);
         return "redirect:/proyectos";
     }
-      // Mostrar formulario de edición de proyecto
+      // Vista formulario de edición
 @GetMapping("/editar/{id}")
 public String mostrarFormularioEdicion(@PathVariable Long id, Model model) {
     // Busca el proyecto por id
     Optional<Proyecto> proyectoOpt = proyectoService.obtenerProyecto(id);
     if (proyectoOpt.isPresent()) {
         model.addAttribute("proyecto", proyectoOpt.get());
-        return "proyectos/editar"; // Se mostrará la vista "editar.html" en la carpeta "proyectos"
+        return "proyectos/editar"; 
     } else {
-        // Si no se encuentra, redirige al listado
+        // Si no se encuentra el proyecto, redirige a la lista de proyectos
         return "redirect:/proyectos";
     }
 }

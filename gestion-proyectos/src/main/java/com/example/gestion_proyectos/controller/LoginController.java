@@ -8,6 +8,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "login"; // Vista login.html en templates
+        return "login"; // Devuelve la vista de inicio de sesión
     }
 }
